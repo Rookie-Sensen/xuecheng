@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xuecheng</groupId>
-        <artifactId>xuecheng-plus-parent</artifactId>
+        <artifactId>xuecheng-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../xuecheng-parent</relativePath>
     </parent>
 
 
-    <artifactId>xuecheng-plus-base</artifactId>
+    <artifactId>xuecheng-base</artifactId>
 
     <dependencies>
         <dependency>

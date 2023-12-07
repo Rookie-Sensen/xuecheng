@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xuecheng</groupId>
-    <artifactId>xuecheng-plus-parent</artifactId>
+    <artifactId>xuecheng-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xuecheng-plus-parent</name>
-    <description>xuecheng-plus-parent</description>
+    <name>xuecheng-parent</name>
+    <description>xuecheng-parent</description>
     <packaging>pom</packaging>
 
     <properties>
