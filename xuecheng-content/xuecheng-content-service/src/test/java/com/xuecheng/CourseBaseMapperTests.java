@@ -7,6 +7,7 @@ import com.xuecheng.base.model.PageResult;
 import com.xuecheng.content.mapper.CourseBaseMapper;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
+import com.xuecheng.content.service.CourseBaseInfoService;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class CourseBaseMapperTests {
 
     @Autowired
     CourseBaseMapper courseBaseMapper;
+
+    @Autowired
+    CourseBaseInfoService courseBaseInfoService;
 
 
     @Test
@@ -44,5 +48,15 @@ public class CourseBaseMapperTests {
         System.out.println(courseBasePageResult);
 
 
+    }
+
+    @Test
+    public void testCourseBaseService() {
+        PageParams pageParams = new PageParams(1L, 10L);
+        QueryCourseParamsDto queryCourseParamsDto = new QueryCourseParamsDto("202004", "java", "203001");
+
+        PageResult<CourseBase> pageResult = courseBaseInfoService.courseBaseInfoList(pageParams, queryCourseParamsDto);
+
+        System.out.println(pageResult);
     }
 }

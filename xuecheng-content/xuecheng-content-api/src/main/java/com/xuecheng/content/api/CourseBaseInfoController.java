@@ -2,22 +2,24 @@ package com.xuecheng.content.api;
 
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
+import com.xuecheng.content.model.dto.AddCourseDto;
+import com.xuecheng.content.model.dto.CourseBaseInfoDto;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
+import com.xuecheng.content.service.CourseBaseInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 //课程基础信息接口
 @RestController
 @Api(value = "课程信息编辑接口", tags = "课程信息编辑接口")
 public class CourseBaseInfoController {
+    @Autowired
+    private CourseBaseInfoService courseBaseInfoService;
 
     /**
      * 分页查询课程信息
@@ -29,13 +31,20 @@ public class CourseBaseInfoController {
     @ApiOperation("课程查询接口")
     public PageResult<CourseBase> list(PageParams pageParams,
                                        @RequestBody(required = false) QueryCourseParamsDto queryCourseParamsDto) {
-        CourseBase courseBase = new CourseBase();
-        courseBase.setName("测试名称");
-        courseBase.setCreateDate(LocalDateTime.now());
-        List<CourseBase> courseBases = new ArrayList();
-        courseBases.add(courseBase);
-        PageResult pageResult = new PageResult<CourseBase>(courseBases,10,1,10);
-        return pageResult;
+        return courseBaseInfoService.courseBaseInfoList(pageParams, queryCourseParamsDto);
+    }
 
+
+    /**
+     * 新增课程基础信息
+     * @param addCourseDto
+     * @return
+     */
+    @PostMapping("/course")
+    @ApiOperation("新增课程基础信息")
+    public CourseBaseInfoDto createCourseBase(@RequestBody AddCourseDto addCourseDto) {
+        //TODO:这里是硬编码，以后要通过threadlocal换
+        long companyId = 1232141425L;
+        return courseBaseInfoService.createCourseBase(companyId, addCourseDto);
     }
 }
